@@ -1,0 +1,26 @@
+{
+  "name": "server_template",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A scalable, opinionated Fastify + TypeScript server template with modern tooling (ESLint, Prettier, Vitest, Pino, Docker, CI/CD, API docs, and more).",
+  "main": "",
+  "scripts": {},
+  "keywords": [
+    "fastify",
+    "typescript",
+    "template",
+    "server",
+    "internal"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LakshayManglani/server_template.git"
+  },
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@10.12.1",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=10.0.0"
+  }
+}
