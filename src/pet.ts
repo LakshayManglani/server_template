@@ -1,4 +1,4 @@
-import { Pet, PetType } from "@/types/pet";
+import { Pet, PetType } from '@/types/pet';
 
 export function createPet(name: string, type: PetType, age: number): Pet {
   return {

@@ -1,5 +1,5 @@
-import { adoptPet } from "@/pet";
-import { Pet } from "@/types/pet";
+import { adoptPet } from '@/pet';
+import { Pet } from '@/types/pet';
 
 export class Shelter {
   #pets: Pet[] = [];

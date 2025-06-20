@@ -1,4 +1,4 @@
-export type PetType = "dog" | "cat" | "mouse";
+export type PetType = 'dog' | 'cat' | 'mouse';
 
 export interface Pet {
   name: string;
