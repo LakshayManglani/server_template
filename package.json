@@ -12,7 +12,9 @@
     "start": "node dist/index.js",
     "typecheck": "pnpm exec tsc --noEmit",
     "format": "pnpm exec prettier --write .",
-    "format:check": "pnpm exec prettier --check ."
+    "format:check": "pnpm exec prettier --check .",
+    "lint": "pnpm exec eslint .",
+    "lint:fix": "pnpm exec eslint . --fix"
   },
   "keywords": [
     "fastify",
@@ -32,12 +34,16 @@
     "pnpm": ">=10.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "9.29.0",
     "@types/node": "24.0.1",
+    "eslint": "9.29.0",
+    "eslint-config-prettier": "10.1.5",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "rimraf": "6.0.1",
     "tsc-alias": "1.8.16",
     "tsx": "4.20.3",
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.34.1"
   }
 }
