@@ -5,7 +5,7 @@ export default defineConfig({
   test: {
     include: ['test/**/*.test.ts'],
     alias: {
-      '@/': new URL('./src/', import.meta.url).pathname,
+      '@/': new URL('src/', import.meta.url).pathname,
     },
   },
 });
