@@ -18,7 +18,17 @@
     "test": "pnpm exec vitest run",
     "test:watch": "pnpm exec vitest",
     "test:ui": "pnpm exec vitest --ui",
-    "coverage": "pnpm exec vitest run --coverage"
+    "coverage": "pnpm exec vitest run --coverage",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "pnpm exec prettier --write",
+      "pnpm exec eslint --fix"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "pnpm exec prettier --write"
+    ]
   },
   "keywords": [
     "fastify",
@@ -45,6 +55,8 @@
     "eslint": "9.29.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-unicorn": "59.0.1",
+    "husky": "9.1.7",
+    "lint-staged": "16.1.2",
     "prettier": "3.5.3",
     "prettier-plugin-organize-imports": "4.1.0",
     "rimraf": "6.0.1",

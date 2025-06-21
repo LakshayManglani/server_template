@@ -1,0 +1,4 @@
+echo "🎯 Running lint-staged (formatting + linting)..."
+pnpm exec lint-staged || { echo "❌ Lint-staged failed. Fix issues before committing."; exit 1; }
+
+echo "✅ All lint-staged checks passed."
