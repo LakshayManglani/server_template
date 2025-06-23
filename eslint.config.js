@@ -27,9 +27,11 @@ export default tseslint.config(
     },
   },
 
-  // Enforces variable and function naming conventions
   {
     rules: {
+      '@typescript-eslint/require-await': 'off',
+
+      // Enforces variable and function naming conventions
       '@typescript-eslint/naming-convention': [
         'error',
         // Variable names: use camelCase
