@@ -2,8 +2,6 @@
 
 This project follows strict naming conventions to ensure consistency, clarity, and maintainability across the entire codebase.
 
----
-
 ## 📁 Folder & File Naming
 
 | Target  | Convention   | Examples                       |
@@ -12,8 +10,6 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 | Files   | `kebab-case` | `get-user.ts`, `jwt-helper.ts` |
 
 ✅ Use `kebab-case` consistently for all folders and file names.
-
----
 
 ## 🧠 Variable Naming
 
@@ -31,8 +27,6 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 >
 > 🔹 `snake_case` is allowed in object properties for external APIs or DB mappings.
 
----
-
 ## ⚙️ Function Naming
 
 | Type            | Convention  | Examples                         |
@@ -42,9 +36,8 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 | Methods         | `camelCase` | `auth.login()`, `user.update()`  |
 
 > 🔹 Name functions based on **what they do**, e.g. `getUserById()`, not `getData()`
+>
 > 🔹 Avoid ambiguous or overly short names like `doTask()` or `handle()`
-
----
 
 ## 📦 TypeScript Naming
 
@@ -58,8 +51,6 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 
 > ✳️ We **do not prefix** interfaces with `I` (e.g. `IUser`) unless integrating with external systems.
 
----
-
 ## 🛠 ESLint Enforcement
 
 The following ESLint rules help enforce naming conventions:
@@ -69,13 +60,9 @@ The following ESLint rules help enforce naming conventions:
 | Variable naming | [`@typescript-eslint/naming-convention`](https://typescript-eslint.io/rules/naming-convention)                         |
 | File naming     | [`unicorn/filename-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md) |
 
----
-
 ## 📝 Best Practices
 
-- ❌ Avoid abbreviations (`res`, `req` are okay in context).
+- ❌ Avoid abbreviations like req (use request).
 - ✅ Name things based on **intent and behavior** (`createToken`, `deleteSession`).
 - ✅ Keep naming consistent across files and modules.
 - ✅ Allow leading underscores (`_token`, `_options`) for unused parameters or internal use.
-
----

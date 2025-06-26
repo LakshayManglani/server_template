@@ -29,6 +29,18 @@ We welcome contributions! Please follow these steps:
 
 For more details on the commit format and other guidelines, please refer to the [Contributor Guidelines](./CONTRIBUTING.md).
 
+## Documentation
+
+To view the internal documentation:
+
+```bash
+npm run docs:dev
+```
+
 ## LICENSE
 
 TODO: Add license
+
+```
+
+```

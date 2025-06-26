@@ -5,6 +5,10 @@
 
 .husky/_/
 
+# VitePress
+docs/.vitepress/dist
+docs/.vitepress/cache
+
 # === https://github.com/github/gitignore/blob/main/Node.gitignore ===
 
 # Logs
