@@ -1,5 +1,16 @@
+import envSchema from 'env-schema';
 import { URL } from 'node:url';
 import { defineConfig } from 'vitest/config';
+import { environmentSchema } from './src/configs/environment';
+
+function loadTestEnvironmentConfig() {
+  return envSchema({
+    schema: environmentSchema,
+    dotenv: {
+      path: '.env.test',
+    },
+  });
+}
 
 export default defineConfig({
   test: {
@@ -10,5 +21,6 @@ export default defineConfig({
     coverage: {
       include: ['src'],
     },
+    env: loadTestEnvironmentConfig(),
   },
 });

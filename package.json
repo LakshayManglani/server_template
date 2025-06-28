@@ -6,7 +6,7 @@
   "description": "A scalable, opinionated Fastify + TypeScript server template with modern tooling (ESLint, Prettier, Vitest, Pino, Docker, CI/CD, API docs, and more).",
   "main": "dist/bin/server.js",
   "scripts": {
-    "dev": "tsx watch src/bin/server.ts",
+    "dev": "tsx watch --env-file=.env src/bin/server.ts",
     "clean": "rimraf dist",
     "build": "pnpm clean && tsc && tsc-alias",
     "start": "node dist/bin/server.js",
@@ -74,6 +74,9 @@
     "vitest": "3.2.4"
   },
   "dependencies": {
+    "@fastify/type-provider-typebox": "5.1.0",
+    "@sinclair/typebox": "0.34.37",
+    "env-schema": "6.0.1",
     "fastify": "5.4.0"
   }
 }

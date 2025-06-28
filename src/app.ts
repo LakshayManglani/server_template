@@ -1,4 +1,7 @@
-import Fastify, { FastifyPluginOptions, FastifyServerOptions } from 'fastify';
+import Fastify from 'fastify';
+
+import type { Environment } from '@/configs/environment';
+import type { FastifyInstance, FastifyServerOptions } from 'fastify';
 
 /**
  * Use this function to create a Fastify server with custom options,
@@ -12,11 +15,14 @@ import Fastify, { FastifyPluginOptions, FastifyServerOptions } from 'fastify';
  */
 async function buildApp({
   serverOptions,
+  environmentConfig,
 }: {
   serverOptions?: FastifyServerOptions;
-  options?: FastifyPluginOptions;
-} = {}) {
+  environmentConfig: Environment;
+}): Promise<FastifyInstance> {
   const app = Fastify(serverOptions ?? {});
+
+  app.decorate('secrets', environmentConfig);
 
   app.get('/health', async () => {
     return {};

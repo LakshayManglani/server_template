@@ -70,7 +70,7 @@ export default tseslint.config(
         // Properties: allow camelCase and snake_case (for API data)
         {
           selector: 'property',
-          format: ['camelCase', 'snake_case'],
+          format: ['camelCase', 'snake_case', 'UPPER_CASE'],
           leadingUnderscore: 'allow',
         },
 

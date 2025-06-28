@@ -13,13 +13,13 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 
 ## 🧠 Variable Naming
 
-| Type                  | Convention                  | Examples                    |
-| --------------------- | --------------------------- | --------------------------- |
-| Regular variables     | `camelCase`                 | `userId`, `accessToken`     |
-| File-scoped constants | `camelCase`                 | `loggerOptions`, `dbConfig` |
-| Global constants      | `UPPER_SNAKE_CASE`          | `JWT_SECRET`, `MAX_RETRIES` |
-| Parameters            | `camelCase`                 | `user`, `token`, `_options` |
-| Object properties     | `camelCase` or `snake_case` | `userData`, `api_response`  |
+| Type                  | Convention                                  | Examples                              |
+| --------------------- | ------------------------------------------- | ------------------------------------- |
+| Regular variables     | `camelCase`                                 | `userId`, `accessToken`               |
+| File-scoped constants | `camelCase`                                 | `loggerOptions`, `dbConfig`           |
+| Global constants      | `UPPER_SNAKE_CASE`                          | `JWT_SECRET`, `MAX_RETRIES`           |
+| Parameters            | `camelCase`                                 | `user`, `token`, `_options`           |
+| Object properties     | `camelCase` or `snake_case` or `UPPER_CASE` | `userData`, `api_response`, `APP_ENV` |
 
 > 🔹 Use `UPPER_SNAKE_CASE` only for **true constants** like env vars or global settings.
 >

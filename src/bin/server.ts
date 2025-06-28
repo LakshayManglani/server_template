@@ -1,4 +1,6 @@
 import { buildApp } from '@/app';
+import { loadEnvironmentConfig } from '@/configs/environment';
+import { getFastifyServerConfig } from '@/configs/server';
 import handleShutdown from '@/shutdown';
 
 /**
@@ -11,30 +13,19 @@ import handleShutdown from '@/shutdown';
  * Logs any startup errors and sets the exit code on failure.
  */
 async function main() {
+  const environmentConfig = loadEnvironmentConfig();
+  const { serverOptions, listenOptions } = getFastifyServerConfig({ environmentConfig });
+
   const app = await buildApp({
-    serverOptions: {
-      logger: {
-        transport: {
-          target: 'pino-pretty',
-          options: {
-            colorize: true,
-            translateTime: 'SYS:yyyy-mm-dd HH:MM:ss:ms',
-            ignore: 'pid,hostname',
-          },
-        },
-        level: 'debug',
-      },
-    },
+    serverOptions,
+    environmentConfig,
   });
 
   try {
     await app.ready();
     handleShutdown(app);
 
-    await app.listen({
-      host: '0.0.0.0',
-      port: 8090,
-    });
+    await app.listen(listenOptions);
   } catch (error) {
     app.log.error(error, 'Application failed to start');
     process.exitCode = 1;

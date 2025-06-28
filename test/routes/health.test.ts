@@ -1,10 +1,9 @@
-import { buildApp } from '@/app';
+import { buildTestApp } from 'test/helper';
 import { describe, expect, it } from 'vitest';
 
 describe('GET /health', () => {
   it('should return 200 with empty body', async () => {
-    const app = await buildApp();
-    await app.ready();
+    const app = await buildTestApp();
 
     const response = await app.inject({
       method: 'GET',

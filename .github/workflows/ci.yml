@@ -33,3 +33,12 @@ jobs:
 
       - name: Run tests
         run: pnpm test
+        env:
+          # Runtime
+          NODE_ENV: test
+          APP_ENV: test
+          # Server
+          HOST: 0.0.0.0
+          PORT: 3000
+          # Logging
+          LOG_LEVEL: silent
