@@ -1,4 +1,4 @@
-import type { Environment } from '@/configs/environment';
+import type { Environment } from '@/core/environment';
 import type { FastifyServerOptions } from 'fastify';
 
 export function getLoggerConfig({

@@ -11,7 +11,7 @@
 - [x] Add `/health` endpoint
 - [x] Setup doc server using vitepress
 - [x] Setup env with `.env.example`, `.env.test`, `.env`
-- [ ] Setup centralized error-handling
+- [x] Setup centralized error-handling
 - [ ] Setup logging
 - [ ] Sanitize logs
 - [ ] Add and propagate `reqId`
@@ -20,6 +20,7 @@
 
 > Goal: Harden the server, enable structured error flow, and optimize basic performance.
 
+- [ ] Setup consistent api-response
 - [ ] Secure HTTP headers
 - [ ] Setup CORS
 - [ ] Setup compression for JSON

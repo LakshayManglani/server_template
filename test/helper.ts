@@ -1,6 +1,6 @@
 import { buildApp } from '@/app';
-import { loadEnvironmentConfig } from '@/configs/environment';
 import { getFastifyServerConfig } from '@/configs/server';
+import { loadEnvironmentConfig } from '@/core/environment';
 
 export async function buildTestApp() {
   const environmentConfig = loadEnvironmentConfig();

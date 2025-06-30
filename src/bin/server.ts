@@ -1,7 +1,7 @@
 import { buildApp } from '@/app';
-import { loadEnvironmentConfig } from '@/configs/environment';
 import { getFastifyServerConfig } from '@/configs/server';
-import handleShutdown from '@/shutdown';
+import { loadEnvironmentConfig } from '@/core/environment';
+import { handleShutdown } from '@/core/shutdown';
 
 /**
  * Main entry point for the Fastify server.

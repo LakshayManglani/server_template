@@ -1,6 +1,8 @@
+import { registerErrorHandler } from '@/core/error-handler';
+import { registerNotFoundHandler } from '@/core/not-found-handler';
 import Fastify from 'fastify';
 
-import type { Environment } from '@/configs/environment';
+import type { Environment } from '@/core/environment';
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
 
 /**
@@ -24,9 +26,12 @@ async function buildApp({
 
   app.decorate('secrets', environmentConfig);
 
-  app.get('/health', async () => {
+  app.get('/health', async function getServerHealth() {
     return {};
   });
+
+  registerErrorHandler(app);
+  registerNotFoundHandler(app);
 
   return app;
 }

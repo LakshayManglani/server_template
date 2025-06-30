@@ -23,7 +23,7 @@ import { FastifyInstance } from 'fastify';
  *
  * @param [closeTimeout=10_000] - Time in milliseconds to wait before forcing termination.
  */
-async function closeApp(instance: FastifyInstance, closeTimeout = 10_000) {
+async function closeFastifyInstance(instance: FastifyInstance, closeTimeout = 10_000) {
   const timeout = setTimeout(() => {
     instance.log.error('Application did not close in time. Force closing.');
     process.exitCode = 1;
@@ -46,7 +46,7 @@ function handleEvent(event: NodeJS.Signals, app: FastifyInstance) {
     isShuttingDown = true;
 
     app.log.info(`${event} received.`);
-    closeApp(app).catch((error: unknown) => {
+    closeFastifyInstance(app).catch((error: unknown) => {
       console.error('Unexpected error during shutdown:', error);
       process.exitCode = 1;
     });
@@ -63,9 +63,7 @@ function handleEvent(event: NodeJS.Signals, app: FastifyInstance) {
  * handleShutdown(app);
  * ```
  */
-function handleShutdown(app: FastifyInstance) {
+export function handleShutdown(app: FastifyInstance) {
   handleEvent('SIGTERM', app);
   handleEvent('SIGINT', app);
 }
-
-export default handleShutdown;

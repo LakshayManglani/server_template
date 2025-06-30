@@ -1,6 +1,6 @@
 import { getLoggerConfig } from '@/configs/logger';
 
-import type { Environment } from '@/configs/environment';
+import type { Environment } from '@/core/environment';
 import type { FastifyListenOptions, FastifyServerOptions } from 'fastify';
 
 export function getFastifyServerConfig(options: { environmentConfig: Environment }): {

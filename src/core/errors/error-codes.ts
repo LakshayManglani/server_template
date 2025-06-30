@@ -1,0 +1,16 @@
+export const ERROR_CODES = {
+  // Global or framework-level
+  ROUTE_NOT_FOUND: 'ROUTE.NOT_FOUND',
+  INTERNAL_SERVER_ERROR: 'INTERNAL',
+
+  // Auth
+  AUTH_MISSING_TOKEN: 'AUTH.MISSING_TOKEN',
+  AUTH_INVALID_TOKEN: 'AUTH.INVALID_TOKEN',
+  AUTH_EXPIRED_TOKEN: 'AUTH.EXPIRED_TOKEN',
+
+  // User domain
+  USER_NOT_FOUND: 'USER.NOT_FOUND',
+  USER_ALREADY_EXISTS: 'USER.ALREADY_EXISTS',
+} as const;
+
+export type ErrorCode = (typeof ERROR_CODES)[keyof typeof ERROR_CODES];

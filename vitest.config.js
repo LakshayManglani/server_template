@@ -1,7 +1,7 @@
 import envSchema from 'env-schema';
 import { URL } from 'node:url';
 import { defineConfig } from 'vitest/config';
-import { environmentSchema } from './src/configs/environment';
+import { environmentSchema } from './src/core/environment';
 
 function loadTestEnvironmentConfig() {
   return envSchema({

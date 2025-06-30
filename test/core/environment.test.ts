@@ -1,4 +1,4 @@
-import { loadEnvironmentConfig } from '@/configs/environment';
+import { loadEnvironmentConfig } from '@/core/environment';
 import { describe, expect, it } from 'vitest';
 
 describe('loadEnvironmentConfig', () => {
