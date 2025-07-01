@@ -12,9 +12,8 @@
 - [x] Setup doc server using vitepress
 - [x] Setup env with `.env.example`, `.env.test`, `.env`
 - [x] Setup centralized error-handling
-- [ ] Setup logging
-- [ ] Sanitize logs
-- [ ] Add and propagate `reqId`
+- [x] Sanitize logs
+- [x] Add and propagate `reqId`
 
 ## 🧱 Phase 2: Security, Performance, and Standards
 
@@ -43,6 +42,10 @@
 - [ ] Add `/ready` endpoint
 - [ ] Add development extension in the `.vscode/extensions.json`
 - [ ] Setup Docker
+- [ ] Setup logging
+  - Docker captures the stdout
+  - Write docker config to rotate logs. (Eg. max-size: 10m, max-file: 5)
+  - Use filebeat or similar tool to centralize the logs
 - [ ] Ensure testing to validate all core functionalities of the server template
 - [ ] Add `author` info to `package.json` once company is finalized
 - [ ] Update `repository.url` in `package.json` once company GitHub account is created

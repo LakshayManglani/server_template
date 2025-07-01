@@ -7,8 +7,8 @@ export function registerErrorHandler(app: FastifyInstance) {
     const isDevelopment = app.secrets.APP_ENV === 'development';
 
     const statusCode = error.statusCode ?? 500;
-    const code = error.code.trim().length > 0 ? error.code : ERROR_CODES.INTERNAL_SERVER_ERROR;
-    const message = error.message.trim().length > 0 ? error.message : 'Unhandled error occurred';
+    const code = resolveErrorCode(error.code);
+    const message = resolveErrorMessage(error.message);
 
     const { stack } = error;
 
@@ -20,7 +20,7 @@ export function registerErrorHandler(app: FastifyInstance) {
         res: reply,
         err: error,
       },
-      message,
+      `[${code}] ${message}`,
     );
 
     const response = {
@@ -38,4 +38,20 @@ export function registerErrorHandler(app: FastifyInstance) {
 
     return response;
   });
+}
+
+function resolveErrorCode(code: string | undefined) {
+  if (code?.trim().length) {
+    return code;
+  }
+
+  return ERROR_CODES.INTERNAL_SERVER_ERROR;
+}
+
+function resolveErrorMessage(message: string | undefined) {
+  if (message?.trim().length) {
+    return message;
+  }
+
+  return 'Unhandled error occurred';
 }

@@ -4,4 +4,8 @@ declare module 'fastify' {
   interface FastifyInstance {
     secrets: Environment;
   }
+
+  interface FastifyContextConfig {
+    logBody?: boolean;
+  }
 }

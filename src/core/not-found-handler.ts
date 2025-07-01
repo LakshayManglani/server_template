@@ -10,7 +10,7 @@ export function registerNotFoundHandler(app: FastifyInstance) {
       {
         req: request,
       },
-      'Route not found',
+      `[${ERROR_CODES.ROUTE_NOT_FOUND}] Route not found`,
     );
 
     const response = {
