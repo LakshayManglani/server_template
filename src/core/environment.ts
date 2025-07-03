@@ -2,7 +2,7 @@ import { Type } from '@sinclair/typebox';
 import envSchema from 'env-schema';
 
 import type { Static } from '@sinclair/typebox';
-import type { EnvSchemaData } from 'env-schema';
+import type { EnvSchemaOpt } from 'env-schema';
 
 export const environmentSchema = Type.Object({
   NODE_ENV: Type.Union([Type.Literal('production'), Type.Literal('test')]),
@@ -14,6 +14,7 @@ export const environmentSchema = Type.Object({
 
   HOST: Type.String({ default: '0.0.0.0' }),
   PORT: Type.Integer({ default: 3000 }),
+  CORS_ORIGINS: Type.Array(Type.String()),
 
   LOG_LEVEL: Type.Union([
     Type.Literal('fatal'),
@@ -24,15 +25,30 @@ export const environmentSchema = Type.Object({
     Type.Literal('trace'),
     Type.Literal('silent'),
   ]),
+
+  RATE_LIMIT_MAX: Type.Integer({ default: 100 }),
+  // Duration of the time window in milliseconds
+  RATE_LIMIT_TIME_WINDOW: Type.Integer({ default: 1000 * 60 }),
+  RATE_LIMIT_CACHE: Type.Integer({ default: 5000 }),
 });
 
 export type Environment = Static<typeof environmentSchema>;
 
-export function loadEnvironmentConfig(options: { data?: EnvSchemaData } = {}) {
-  const data = options.data ?? {};
+export function loadEnvironmentConfig(environmentSchemaOptions: EnvSchemaOpt = {}) {
+  const { data, ...options } = environmentSchemaOptions;
+
+  const CORS_ORIGINS = process.env.CORS_ORIGINS?.trim().replaceAll(' ', '').split(',');
+
+  const fullData: typeof data = [
+    {
+      CORS_ORIGINS,
+    },
+    ...(data ? (Array.isArray(data) ? data : [data]) : []),
+  ];
 
   return envSchema<Environment>({
+    ...options,
     schema: environmentSchema,
-    data,
+    data: fullData,
   });
 }

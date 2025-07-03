@@ -1,15 +1,19 @@
+import { Type } from '@sinclair/typebox';
 import envSchema from 'env-schema';
 import { URL } from 'node:url';
 import { defineConfig } from 'vitest/config';
-import { environmentSchema } from './src/core/environment';
+import { loadEnvironmentConfig } from './src/core/environment';
 
 function loadTestEnvironmentConfig() {
-  return envSchema({
-    schema: environmentSchema,
+  // Load environment variables from `.env.test` into `process.env` without overwriting existing values
+  envSchema({
     dotenv: {
       path: '.env.test',
     },
+    schema: Type.Object({}),
   });
+
+  return loadEnvironmentConfig();
 }
 
 export default defineConfig({

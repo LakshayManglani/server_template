@@ -7,7 +7,7 @@ export function registerErrorHandler(app: FastifyInstance) {
     const isDevelopment = app.secrets.APP_ENV === 'development';
 
     const statusCode = error.statusCode ?? 500;
-    const code = resolveErrorCode(error.code);
+    const code = resolveErrorCode(error.code, statusCode);
     const message = resolveErrorMessage(error.message);
 
     const { stack } = error;
@@ -40,18 +40,22 @@ export function registerErrorHandler(app: FastifyInstance) {
   });
 }
 
-function resolveErrorCode(code: string | undefined) {
-  if (code?.trim().length) {
-    return code;
+function resolveErrorCode(code: string | undefined, statusCode: number) {
+  if (statusCode === 429) {
+    return ERROR_CODES.RATE_LIMIT_EXCEEDED;
   }
 
-  return ERROR_CODES.INTERNAL_SERVER_ERROR;
+  if (!code || code.trim().length === 0) {
+    return ERROR_CODES.INTERNAL_SERVER_ERROR;
+  }
+
+  return code;
 }
 
 function resolveErrorMessage(message: string | undefined) {
-  if (message?.trim().length) {
-    return message;
+  if (!message || message.trim().length === 0) {
+    return 'Unhandled error occurred';
   }
 
-  return 'Unhandled error occurred';
+  return message;
 }

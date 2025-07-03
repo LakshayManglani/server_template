@@ -8,7 +8,7 @@ import { handleShutdown } from '@/core/shutdown';
  *
  * - Builds and configures the Fastify application.
  * - Registers shutdown hooks.
- * - Starts listening on port 8090.
+ * - Starts listening.
  *
  * Logs any startup errors and sets the exit code on failure.
  */
@@ -23,6 +23,10 @@ async function main() {
 
   try {
     await app.ready();
+
+    app.log.debug(`Plugins\n${app.printPlugins()}`);
+    app.log.debug(`Routes\n${app.printRoutes()}`);
+
     handleShutdown(app);
 
     await app.listen(listenOptions);

@@ -19,11 +19,10 @@
 
 > Goal: Harden the server, enable structured error flow, and optimize basic performance.
 
+- [x] Secure HTTP headers
+- [x] Setup CORS
+- [x] Setup rate-limiting
 - [ ] Setup consistent api-response
-- [ ] Secure HTTP headers
-- [ ] Setup CORS
-- [ ] Setup compression for JSON
-- [ ] Setup rate-limiting
 - [ ] Setup type-safe schema validation
 - [ ] Setup metrics endpoint
 
@@ -50,3 +49,6 @@
 - [ ] Add `author` info to `package.json` once company is finalized
 - [ ] Update `repository.url` in `package.json` once company GitHub account is created
 - [ ] Choose License
+- [ ] Setup compression for JSON
+  - Setup this in nginx
+  - reason: nginx is multithreaded

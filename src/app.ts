@@ -1,6 +1,7 @@
 import { registerErrorHandler } from '@/core/error-handler';
 import { registerNotFoundHandler } from '@/core/not-found-handler';
-import Fastify from 'fastify';
+import { externalPlugin } from '@/plugins/external';
+import { fastify } from 'fastify';
 
 import type { Environment } from '@/core/environment';
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
@@ -22,9 +23,11 @@ async function buildApp({
   serverOptions?: FastifyServerOptions;
   environmentConfig: Environment;
 }): Promise<FastifyInstance> {
-  const app = Fastify(serverOptions ?? {});
+  const app = fastify(serverOptions ?? {});
 
   app.decorate('secrets', environmentConfig);
+
+  await app.register(externalPlugin);
 
   app.get('/health', async function getServerHealth() {
     return {};
