@@ -13,4 +13,3 @@ async function corsLoader(fastify: FastifyInstance) {
 }
 
 export const corsPlugin = fastifyPlugin(corsLoader);
-export default corsPlugin;

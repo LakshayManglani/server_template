@@ -1,5 +1,5 @@
 import { buildApp } from '@/app';
-import { getFastifyServerConfig } from '@/configs/server';
+import { getFastifyServerConfig } from '@/configs/server.config';
 import { loadEnvironmentConfig } from '@/core/environment';
 import { handleShutdown } from '@/core/shutdown';
 
@@ -25,7 +25,11 @@ async function main() {
     await app.ready();
 
     app.log.debug(`Plugins\n${app.printPlugins()}`);
-    app.log.debug(`Routes\n${app.printRoutes()}`);
+    app.log.debug(
+      `Routes\n${app.printRoutes({
+        includeHooks: true,
+      })}`,
+    );
 
     handleShutdown(app);
 

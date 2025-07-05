@@ -10,4 +10,3 @@ async function helmetLoader(fastify: FastifyInstance) {
 }
 
 export const helmetPlugin = fastifyPlugin(helmetLoader);
-export default helmetPlugin;

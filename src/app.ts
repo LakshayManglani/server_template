@@ -1,10 +1,11 @@
-import { registerErrorHandler } from '@/core/error-handler';
-import { registerNotFoundHandler } from '@/core/not-found-handler';
-import { externalPlugin } from '@/plugins/external';
 import { fastify } from 'fastify';
 
-import type { Environment } from '@/core/environment';
+import { registerErrorHandler } from '@/core/error-handler';
+import { registerNotFoundHandler } from '@/core/not-found-handler';
+import { externalModulePlugin } from '@/plugins/external/external.module';
+
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
+import type { Environment } from '@/core/environment';
 
 /**
  * Use this function to create a Fastify server with custom options,
@@ -27,7 +28,7 @@ async function buildApp({
 
   app.decorate('secrets', environmentConfig);
 
-  await app.register(externalPlugin);
+  await app.register(externalModulePlugin);
 
   app.get('/health', async function getServerHealth() {
     return {};

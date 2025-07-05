@@ -1,6 +1,7 @@
-import type { Environment } from '@/core/environment';
-import type { FastifyRequest, FastifyServerOptions } from 'fastify';
 import { PinoLoggerOptions } from 'fastify/types/logger';
+
+import type { FastifyRequest, FastifyServerOptions } from 'fastify';
+import type { Environment } from '@/core/environment';
 
 export function getLoggerConfig({
   appEnvironment,

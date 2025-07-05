@@ -1,7 +1,8 @@
-import { Type } from '@sinclair/typebox';
-import envSchema from 'env-schema';
 import { URL } from 'node:url';
+import { Type } from '@sinclair/typebox';
+import { envSchema } from 'env-schema';
 import { defineConfig } from 'vitest/config';
+
 import { loadEnvironmentConfig } from './src/core/environment';
 
 function loadTestEnvironmentConfig() {

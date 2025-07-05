@@ -1,8 +1,8 @@
 import { Type } from '@sinclair/typebox';
-import envSchema from 'env-schema';
+import { envSchema } from 'env-schema';
 
-import type { Static } from '@sinclair/typebox';
 import type { EnvSchemaOpt } from 'env-schema';
+import type { Static } from '@sinclair/typebox';
 
 export const environmentSchema = Type.Object({
   NODE_ENV: Type.Union([Type.Literal('production'), Type.Literal('test')]),

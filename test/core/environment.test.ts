@@ -1,5 +1,6 @@
-import { loadEnvironmentConfig } from '@/core/environment';
 import { describe, expect, it } from 'vitest';
+
+import { loadEnvironmentConfig } from '@/core/environment';
 
 describe('loadEnvironmentConfig', () => {
   it('throws a validation error if APP_ENV is missing', () => {

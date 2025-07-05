@@ -14,4 +14,3 @@ async function rateLimitLoader(fastify: FastifyInstance) {
 }
 
 export const rateLimitPlugin = fastifyPlugin(rateLimitLoader);
-export default rateLimitPlugin;

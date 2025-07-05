@@ -1,3 +1,5 @@
+import { getStatusCode, ReasonPhrases, StatusCodes } from 'http-status-codes';
+
 import { ERROR_CODES } from '@/core/errors/error-codes';
 
 import type { FastifyInstance } from 'fastify';
@@ -6,7 +8,7 @@ export function registerErrorHandler(app: FastifyInstance) {
   app.setErrorHandler(async function errorHandler(error, request, reply) {
     const isDevelopment = app.secrets.APP_ENV === 'development';
 
-    const statusCode = error.statusCode ?? 500;
+    const statusCode = error.statusCode ?? StatusCodes.INTERNAL_SERVER_ERROR;
     const code = resolveErrorCode(error.code, statusCode);
     const message = resolveErrorMessage(error.message);
 
@@ -41,7 +43,7 @@ export function registerErrorHandler(app: FastifyInstance) {
 }
 
 function resolveErrorCode(code: string | undefined, statusCode: number) {
-  if (statusCode === 429) {
+  if (statusCode === getStatusCode(ReasonPhrases.TOO_MANY_REQUESTS)) {
     return ERROR_CODES.RATE_LIMIT_EXCEEDED;
   }
 
