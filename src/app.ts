@@ -3,6 +3,7 @@ import { fastify } from 'fastify';
 import { registerErrorHandler } from '@/core/error-handler';
 import { registerNotFoundHandler } from '@/core/not-found-handler';
 import { externalModulePlugin } from '@/plugins/external/external.module';
+import { routesModulePlugin } from '@/routes/routes.module';
 
 import type { FastifyInstance, FastifyServerOptions } from 'fastify';
 import type { Environment } from '@/core/environment';
@@ -30,12 +31,21 @@ async function buildApp({
 
   await app.register(externalModulePlugin);
 
+  registerErrorHandler(app);
+  registerNotFoundHandler(app);
+
+  app.decorateRequest('service');
+  app.addHook('onRequest', async function serviceHook(request) {
+    request.service = {} as typeof request.service;
+  });
+
   app.get('/health', async function getServerHealth() {
     return {};
   });
 
-  registerErrorHandler(app);
-  registerNotFoundHandler(app);
+  await app.register(routesModulePlugin, {
+    prefix: 'api',
+  });
 
   return app;
 }

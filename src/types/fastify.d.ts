@@ -1,4 +1,5 @@
 import { Environment } from '@/core/environment';
+import { TodosService } from '@/services/todos/todos.service';
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -7,5 +8,11 @@ declare module 'fastify' {
 
   interface FastifyContextConfig {
     logBody?: boolean;
+  }
+
+  interface FastifyRequest {
+    service: {
+      todos: TodosService;
+    };
   }
 }
