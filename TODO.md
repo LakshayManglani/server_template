@@ -22,7 +22,7 @@
 - [x] Secure HTTP headers
 - [x] Setup CORS
 - [x] Setup rate-limiting
-- [ ] Setup consistent api-response
+- [x] Setup consistent api-response
 - [ ] Setup type-safe schema validation
 - [ ] Setup metrics endpoint
 

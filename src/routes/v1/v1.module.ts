@@ -1,9 +1,10 @@
-import { FastifyInstance } from 'fastify';
 import { fastifyPlugin } from 'fastify-plugin';
 
 import { examplesModulePlugin } from '@/routes/v1/examples/examples.module';
 
-async function v1Module(app: FastifyInstance) {
+import type { FastifyTypebox } from '@/types/fastify';
+
+async function v1Module(app: FastifyTypebox) {
   await app.register(examplesModulePlugin, {
     prefix: 'examples',
   });

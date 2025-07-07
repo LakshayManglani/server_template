@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify';
+import type { FastifyTypebox } from '@/types/fastify';
 
 /**
  * Gracefully shuts down the Fastify application.
@@ -13,9 +13,9 @@ import { FastifyInstance } from 'fastify';
  * ## Example
  *
  * ```ts
- * import { FastifyInstance } from "fastify";
+ * import { FastifyTypebox } from "fastify";
  *
- * const app: FastifyInstance = fastify();
+ * const app: FastifyTypebox = fastify();
  *
  * process.once("SIGINT", () => { closeApp(app) }); // Handles Ctrl+C
  * process.once("SIGTERM", () => { closeApp(app) }); // Handles process termination
@@ -23,30 +23,30 @@ import { FastifyInstance } from 'fastify';
  *
  * @param [closeTimeout=10_000] - Time in milliseconds to wait before forcing termination.
  */
-async function closeFastifyInstance(instance: FastifyInstance, closeTimeout = 10_000) {
+async function closeFastifyApp(app: FastifyTypebox, closeTimeout = 10_000) {
   const timeout = setTimeout(() => {
-    instance.log.error('Application did not close in time. Force closing.');
+    app.log.error('Application did not close in time. Force closing.');
     process.exitCode = 1;
   }, closeTimeout);
   timeout.unref();
 
   try {
-    await instance.close();
-    instance.log.info('Application closed');
+    await app.close();
+    app.log.info('Application closed');
   } catch (error) {
-    instance.log.error('Error closing application:', error);
+    app.log.error('Error closing application:', error);
     process.exitCode = 1;
   }
 }
 
 let isShuttingDown = false;
-function handleEvent(event: NodeJS.Signals, app: FastifyInstance) {
+function handleEvent(event: NodeJS.Signals, app: FastifyTypebox) {
   process.on(event, () => {
     if (isShuttingDown) return;
     isShuttingDown = true;
 
     app.log.info(`${event} received.`);
-    closeFastifyInstance(app).catch((error: unknown) => {
+    closeFastifyApp(app).catch((error: unknown) => {
       console.error('Unexpected error during shutdown:', error);
       process.exitCode = 1;
     });
@@ -63,7 +63,7 @@ function handleEvent(event: NodeJS.Signals, app: FastifyInstance) {
  * handleShutdown(app);
  * ```
  */
-export function handleShutdown(app: FastifyInstance) {
+export function handleShutdown(app: FastifyTypebox) {
   handleEvent('SIGTERM', app);
   handleEvent('SIGINT', app);
 }

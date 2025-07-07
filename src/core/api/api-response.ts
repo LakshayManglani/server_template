@@ -1,12 +1,12 @@
 import type { FastifyReply, FastifyRequest } from 'fastify';
 
-export function generateApiResponse(
+export function generateApiResponse<T extends object | null>(
   fastifyRequest: FastifyRequest,
   fastifyReply: FastifyReply,
   responseOptions: {
     message: string;
     statusCode: number;
-    data: null | object;
+    data: T;
   },
 ) {
   const { message, data, statusCode } = responseOptions;

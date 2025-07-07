@@ -5,8 +5,10 @@ import { registerNotFoundHandler } from '@/core/not-found-handler';
 import { externalModulePlugin } from '@/plugins/external/external.module';
 import { routesModulePlugin } from '@/routes/routes.module';
 
-import type { FastifyInstance, FastifyServerOptions } from 'fastify';
+import type { FastifyServerOptions } from 'fastify';
 import type { Environment } from '@/core/environment';
+import type { FastifyTypebox } from '@/types/fastify';
+import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 
 /**
  * Use this function to create a Fastify server with custom options,
@@ -24,8 +26,8 @@ async function buildApp({
 }: {
   serverOptions?: FastifyServerOptions;
   environmentConfig: Environment;
-}): Promise<FastifyInstance> {
-  const app = fastify(serverOptions ?? {});
+}): Promise<FastifyTypebox> {
+  const app = fastify(serverOptions ?? {}).withTypeProvider<TypeBoxTypeProvider>();
 
   app.decorate('secrets', environmentConfig);
 

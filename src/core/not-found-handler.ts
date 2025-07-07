@@ -1,8 +1,8 @@
 import { ERROR_CODES } from '@/core/errors/error-codes';
 
-import type { FastifyInstance } from 'fastify';
+import type { FastifyTypebox } from '@/types/fastify';
 
-export function registerNotFoundHandler(app: FastifyInstance) {
+export function registerNotFoundHandler(app: FastifyTypebox) {
   app.setNotFoundHandler(
     {
       preHandler: app.rateLimit({

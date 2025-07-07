@@ -2,9 +2,9 @@ import { getStatusCode, ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 import { ERROR_CODES } from '@/core/errors/error-codes';
 
-import type { FastifyInstance } from 'fastify';
+import type { FastifyTypebox } from '@/types/fastify';
 
-export function registerErrorHandler(app: FastifyInstance) {
+export function registerErrorHandler(app: FastifyTypebox) {
   app.setErrorHandler(async function errorHandler(error, request, reply) {
     const isDevelopment = app.secrets.APP_ENV === 'development';
 

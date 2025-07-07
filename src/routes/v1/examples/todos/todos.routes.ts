@@ -1,10 +1,11 @@
-import { FastifyInstance } from 'fastify';
 import { fastifyPlugin } from 'fastify-plugin';
 import { StatusCodes } from 'http-status-codes';
 
-import { generateApiResponse } from '@/core/api-response';
+import { generateApiResponse } from '@/core/api/api-response';
 
-async function todosRoutes(app: FastifyInstance) {
+import type { FastifyTypebox } from '@/types/fastify';
+
+async function todosRoutes(app: FastifyTypebox) {
   app.get('/', {}, async function listTodos(request, reply) {
     const { totalCount, todos } = await request.service.todos.getTodos();
 

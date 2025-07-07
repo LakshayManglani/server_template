@@ -1,9 +1,10 @@
-import { FastifyInstance } from 'fastify';
 import { fastifyPlugin } from 'fastify-plugin';
 
 import { todosModulePlugin } from '@/routes/v1/examples/todos/todos.module';
 
-async function examplesModule(app: FastifyInstance) {
+import type { FastifyTypebox } from '@/types/fastify';
+
+async function examplesModule(app: FastifyTypebox) {
   await app.register(todosModulePlugin, {
     prefix: 'todos',
   });
