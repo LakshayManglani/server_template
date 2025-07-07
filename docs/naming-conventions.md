@@ -13,19 +13,17 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 
 ## 🧠 Variable Naming
 
-| Type                  | Convention                                  | Examples                              |
-| --------------------- | ------------------------------------------- | ------------------------------------- |
-| Regular variables     | `camelCase`                                 | `userId`, `accessToken`               |
-| File-scoped constants | `camelCase`                                 | `loggerOptions`, `dbConfig`           |
-| Global constants      | `UPPER_SNAKE_CASE`                          | `JWT_SECRET`, `MAX_RETRIES`           |
-| Parameters            | `camelCase`                                 | `user`, `token`, `_options`           |
-| Object properties     | `camelCase` or `snake_case` or `UPPER_CASE` | `userData`, `api_response`, `APP_ENV` |
+| Type                  | Convention                              | Examples                              |
+| --------------------- | --------------------------------------- | ------------------------------------- |
+| Regular variables     | `camelCase`                             | `userId`, `accessToken`               |
+| File-scoped constants | `camelCase`                             | `loggerOptions`, `dbConfig`           |
+| Global constants      | `UPPER_SNAKE_CASE`                      | `JWT_SECRET`, `MAX_RETRIES`           |
+| Parameters            | `camelCase`                             | `user`, `token`, `_options`           |
+| Object properties     | `camelCase`, `snake_case`, `UPPER_CASE` | `userData`, `api_response`, `APP_ENV` |
 
 > 🔹 Use `UPPER_SNAKE_CASE` only for **true constants** like env vars or global settings.
 >
 > 🔹 `camelCase` is used for most identifiers.
->
-> 🔹 `snake_case` is allowed in object properties for external APIs or DB mappings.
 
 ## ⚙️ Function Naming
 

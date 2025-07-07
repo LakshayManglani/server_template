@@ -73,6 +73,12 @@ export default tseslint.config(
           format: ['camelCase', 'snake_case', 'UPPER_CASE'],
           leadingUnderscore: 'allow',
         },
+        // Skip validation for literal keys like "200"
+        {
+          selector: 'property',
+          modifiers: ['requiresQuotes'],
+          format: null,
+        },
 
         // Enum members: PascalCase
         {
