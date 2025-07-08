@@ -1,4 +1,5 @@
 import { ERROR_CODES } from '@/core/errors/error-codes';
+import { getTimestamp } from '@/core/utilities';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
@@ -11,6 +12,7 @@ export function registerNotFoundHandler(app: FastifyTypebox) {
       }),
     },
     async (request, reply) => {
+      const { APP_ENV } = app.secrets;
       reply.code(404);
 
       request.log.warn(
@@ -28,7 +30,7 @@ export function registerNotFoundHandler(app: FastifyTypebox) {
         },
         meta: {
           requestId: request.id,
-          timeStamp: new Date().toISOString(),
+          timeStamp: getTimestamp(APP_ENV),
         },
       };
 

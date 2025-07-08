@@ -14,6 +14,11 @@ async function todosRoutes(app: FastifyTypebox) {
     '/',
     {
       schema: {
+        tags: ['todos'],
+        summary: 'List todos',
+        description: 'Fetch a paginated list of todos with skip and limit parameters.',
+        operationId: 'listTodos',
+        consumes: ['application/json'],
         querystring: TODOS_LIST_QUERY_SCHEMA,
         response: {
           200: TODOS_LIST_RESPONSE_SCHEMA,
@@ -27,12 +32,17 @@ async function todosRoutes(app: FastifyTypebox) {
         limit,
       });
 
-      return generateApiResponse(request, reply, {
-        message: 'Todos fetched successfully',
-        statusCode: StatusCodes.OK,
-        data: {
-          todos,
-          pagination,
+      return generateApiResponse({
+        app,
+        request,
+        reply,
+        response: {
+          message: 'Todos fetched successfully',
+          statusCode: StatusCodes.OK,
+          data: {
+            todos,
+            pagination,
+          },
         },
       });
     },

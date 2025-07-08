@@ -13,7 +13,7 @@ export interface TodosService {
   }>;
 }
 
-const TOTAL_TODOS = 1_000_000;
+const TOTAL_TODOS = 1000;
 
 async function todosService(app: FastifyTypebox) {
   app.addHook('onRequest', async function todosServiceHook(request) {

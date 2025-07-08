@@ -1,12 +1,14 @@
 import { getStatusCode, ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 import { ERROR_CODES } from '@/core/errors/error-codes';
+import { getTimestamp } from '@/core/utilities';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
 export function registerErrorHandler(app: FastifyTypebox) {
   app.setErrorHandler(async function errorHandler(error, request, reply) {
-    const isDevelopment = app.secrets.APP_ENV === 'development';
+    const { APP_ENV } = app.secrets;
+    const isDevelopment = APP_ENV === 'development';
 
     const statusCode = error.statusCode ?? StatusCodes.INTERNAL_SERVER_ERROR;
     const code = resolveErrorCode(error.code, statusCode);
@@ -34,7 +36,7 @@ export function registerErrorHandler(app: FastifyTypebox) {
       },
       meta: {
         requestId: request.id,
-        timeStamp: new Date().toISOString(),
+        timeStamp: getTimestamp(APP_ENV),
       },
     };
 

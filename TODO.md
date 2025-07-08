@@ -23,7 +23,8 @@
 - [x] Setup CORS
 - [x] Setup rate-limiting
 - [x] Setup consistent api-response
-- [ ] Setup type-safe schema validation
+- [x] Setup type-safe schema validation
+- [x] Setup API documentation using Swagger, etc.
 - [ ] Setup metrics endpoint
 
 ## 📘 Phase 3: Docs and Developer Onboarding
@@ -32,7 +33,6 @@
 
 - [ ] Add sections like `pre-commit` & `pre-push` in `CONTRIBUTING.md` once husky and type-checks are configured
 - [ ] Setup docs for naming conventions, how-to-create-routes etc.
-- [ ] Setup API documentation using Swagger, etc.
 
 ## 🚦 Phase 4: Production Readiness
 

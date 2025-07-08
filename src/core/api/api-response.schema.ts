@@ -5,11 +5,11 @@ export const META_SCHEMA = Type.Object({
   timeStamp: Type.String(),
 });
 
-export function createApiResponseType<T extends TSchema>(dataSchema: T) {
+export function createApiResponseType(dataSchema?: TSchema) {
   return Type.Object({
     success: Type.Boolean(),
     message: Type.String(),
-    data: Type.Union([Type.Null(), dataSchema]),
+    data: dataSchema ?? Type.Object({}),
     meta: META_SCHEMA,
   });
 }

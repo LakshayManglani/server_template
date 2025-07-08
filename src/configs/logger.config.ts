@@ -1,5 +1,7 @@
 import { PinoLoggerOptions } from 'fastify/types/logger';
 
+import { getTimestamp } from '@/core/utilities';
+
 import type { FastifyRequest, FastifyServerOptions } from 'fastify';
 import type { Environment } from '@/core/environment';
 
@@ -26,6 +28,8 @@ export function getLoggerConfig({
     req: serializeRequest,
   };
 
+  const timestamp = () => `,"time":"${getTimestamp(appEnvironment)}"`;
+
   if (appEnvironment === 'development') {
     return {
       level: logLevel,
@@ -35,14 +39,20 @@ export function getLoggerConfig({
         target: 'pino-pretty',
         options: {
           colorize: true,
-          translateTime: 'SYS:yyyy-mm-dd HH:MM:ss:ms',
+          translateTime: 'SYS:m/d/yyyy, h:M:ss:ms TT',
           ignore: 'pid,hostname',
         },
       },
+      timestamp,
     };
   }
 
-  return { level: logLevel, redact, serializers };
+  return {
+    level: logLevel,
+    redact,
+    serializers,
+    timestamp,
+  };
 }
 
 function serializeRequest(request: FastifyRequest) {
