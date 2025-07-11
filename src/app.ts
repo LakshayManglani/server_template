@@ -36,11 +36,6 @@ async function buildApp({
   registerErrorHandler(app);
   registerNotFoundHandler(app);
 
-  app.decorateRequest('service');
-  app.addHook('onRequest', async function serviceHook(request) {
-    request.service = {} as typeof request.service;
-  });
-
   app.get('/health', async function getServerHealth() {
     return {};
   });

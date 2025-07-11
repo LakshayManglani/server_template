@@ -1,14 +1,13 @@
-import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
-import {
+import type {
   FastifyBaseLogger,
   FastifyInstance,
   RawReplyDefaultExpression,
   RawRequestDefaultExpression,
   RawServerDefault,
 } from 'fastify';
-
-import { Environment } from '@/core/environment';
-import { TodosService } from '@/services/todos/todos.service';
+import type { Environment } from '@/core/environment';
+import type { TodosService } from '@/services/todos/todos.service';
+import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 
 export type FastifyTypebox = FastifyInstance<
   RawServerDefault,
@@ -21,15 +20,12 @@ export type FastifyTypebox = FastifyInstance<
 declare module 'fastify' {
   interface FastifyInstance extends FastifyInstance<TypeBoxTypeProvider> {
     secrets: Environment;
+    service: {
+      todos: TodosService;
+    };
   }
 
   interface FastifyContextConfig {
     logBody?: boolean;
-  }
-
-  interface FastifyRequest {
-    service: {
-      todos: TodosService;
-    };
   }
 }

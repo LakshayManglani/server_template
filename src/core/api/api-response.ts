@@ -3,14 +3,14 @@ import { getTimestamp } from '@/core/utilities';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { FastifyTypebox } from '@/types/fastify';
 
-export function generateApiResponse(options: {
+export function generateApiResponse<Data>(options: {
   app: FastifyTypebox;
   request: FastifyRequest;
   reply: FastifyReply;
   response: {
     message: string;
     statusCode: number;
-    data: object;
+    data: Data;
   };
 }) {
   const { app, request, reply } = options;

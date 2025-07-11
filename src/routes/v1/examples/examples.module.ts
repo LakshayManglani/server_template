@@ -4,13 +4,13 @@ import { todosModulePlugin } from '@/routes/v1/examples/todos/todos.module';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
-async function examplesModule(app: FastifyTypebox) {
+async function examplesModuleLoader(app: FastifyTypebox) {
   await app.register(todosModulePlugin, {
     prefix: 'todos',
   });
 }
 
-export const examplesModulePlugin = fastifyPlugin(examplesModule, {
+export const examplesModulePlugin = fastifyPlugin(examplesModuleLoader, {
   name: 'examplesModule',
   encapsulate: true,
 });

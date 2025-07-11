@@ -1,4 +1,4 @@
-import { Type } from '@sinclair/typebox';
+import { Static, Type } from '@sinclair/typebox';
 
 import { createApiResponseType } from '@/core/api/api-response.schema';
 
@@ -65,3 +65,5 @@ export const TODOS_LIST_RESPONSE_SCHEMA = createApiResponseType(
     },
   ),
 );
+
+export type TodosListResponseData = Static<typeof TODOS_LIST_RESPONSE_SCHEMA.properties.data>;

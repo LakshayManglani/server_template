@@ -5,12 +5,12 @@ import { todosServicePlugin } from '@/services/todos/todos.service';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
-async function todosModule(app: FastifyTypebox) {
+async function todosModuleLoader(app: FastifyTypebox) {
   await app.register(todosServicePlugin);
   await app.register(todosRoutesPlugin);
 }
 
-export const todosModulePlugin = fastifyPlugin(todosModule, {
+export const todosModulePlugin = fastifyPlugin(todosModuleLoader, {
   name: 'todosModule',
   encapsulate: true,
 });

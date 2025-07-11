@@ -5,11 +5,14 @@ import { generateApiResponse } from '@/core/api/api-response';
 import {
   TODOS_LIST_QUERY_SCHEMA,
   TODOS_LIST_RESPONSE_SCHEMA,
+  TodosListResponseData,
 } from '@/routes/v1/examples/todos/todos.schema';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
 async function todosRoutes(app: FastifyTypebox) {
+  const { service } = app;
+
   app.get(
     '/',
     {
@@ -21,18 +24,18 @@ async function todosRoutes(app: FastifyTypebox) {
         consumes: ['application/json'],
         querystring: TODOS_LIST_QUERY_SCHEMA,
         response: {
-          200: TODOS_LIST_RESPONSE_SCHEMA,
+          [StatusCodes.OK]: TODOS_LIST_RESPONSE_SCHEMA,
         },
       },
     },
     async function listTodos(request, reply) {
       const { skip, limit } = request.query;
-      const { todos, pagination } = await request.service.todos.getTodos({
+      const { todos, pagination } = await service.todos.getTodos({
         skip,
         limit,
       });
 
-      return generateApiResponse({
+      return generateApiResponse<TodosListResponseData>({
         app,
         request,
         reply,

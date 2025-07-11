@@ -24,13 +24,6 @@ async function main() {
   try {
     await app.ready();
 
-    app.log.debug(`Plugins\n${app.printPlugins()}`);
-    app.log.debug(
-      `Routes\n${app.printRoutes({
-        includeHooks: true,
-      })}`,
-    );
-
     handleShutdown(app);
 
     await app.listen(listenOptions);

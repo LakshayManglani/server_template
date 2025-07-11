@@ -15,9 +15,10 @@ export interface TodosService {
 
 const TOTAL_TODOS = 1000;
 
-async function todosService(app: FastifyTypebox) {
-  app.addHook('onRequest', async function todosServiceHook(request) {
-    request.service.todos = {
+async function todosServiceLoader(app: FastifyTypebox) {
+  app.decorate('service', {
+    ...app.service,
+    todos: {
       async getTodos(options) {
         const { skip = 0, limit = 10 } = options;
 
@@ -43,10 +44,10 @@ async function todosService(app: FastifyTypebox) {
           },
         };
       },
-    };
+    },
   });
 }
 
-export const todosServicePlugin = fastifyPlugin(todosService, {
+export const todosServicePlugin = fastifyPlugin(todosServiceLoader, {
   name: 'todosService',
 });
