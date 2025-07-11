@@ -51,3 +51,5 @@ jobs:
           # Duration of the time window in milliseconds
           RATE_LIMIT_TIME_WINDOW: 1000
           RATE_LIMIT_CACHE: 5000
+          # Database
+          DATABASE_URL: 'postgresql://postgres:postgres@localhost:5432/test_db'

@@ -34,7 +34,7 @@ async function closeFastifyApp(app: FastifyTypebox, closeTimeout = 10_000) {
     await app.close();
     app.log.info('Application closed');
   } catch (error) {
-    app.log.error('Error closing application:', error);
+    app.log.error(error, 'Error closing application:');
     process.exitCode = 1;
   }
 }
@@ -47,7 +47,7 @@ function handleEvent(event: NodeJS.Signals, app: FastifyTypebox) {
 
     app.log.info(`${event} received.`);
     closeFastifyApp(app).catch((error: unknown) => {
-      console.error('Unexpected error during shutdown:', error);
+      app.log.error(error, 'Unexpected error during shutdown:');
       process.exitCode = 1;
     });
   });

@@ -30,6 +30,8 @@ export const environmentSchema = Type.Object({
   // Duration of the time window in milliseconds
   RATE_LIMIT_TIME_WINDOW: Type.Integer({ default: 1000 * 60 }),
   RATE_LIMIT_CACHE: Type.Integer({ default: 5000 }),
+
+  DATABASE_URL: Type.String({}),
 });
 
 export type Environment = Static<typeof environmentSchema>;
