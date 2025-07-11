@@ -1,4 +1,6 @@
-import { TSchema, Type } from '@sinclair/typebox';
+import { Type } from '@sinclair/typebox';
+
+import type { TSchema } from '@sinclair/typebox';
 
 export const META_SCHEMA = Type.Object({
   requestId: Type.String(),

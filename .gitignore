@@ -9,6 +9,9 @@
 docs/.vitepress/dist
 docs/.vitepress/cache
 
+# Prisma
+prisma/migrations/migration_lock.toml
+
 # === https://github.com/github/gitignore/blob/main/Node.gitignore ===
 
 # Logs

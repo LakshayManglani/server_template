@@ -10,5 +10,9 @@
     "source.fixAll.eslint": "always"
   },
   "eslint.validate": ["typescript"],
-  "eslint.useFlatConfig": true
+  "eslint.useFlatConfig": true,
+
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  }
 }
