@@ -36,7 +36,10 @@ async function swaggerLoader(app: FastifyTypebox) {
                 description: 'Development server',
               },
             ],
-      tags: [{ name: 'todos', description: 'Todos related end-points' }],
+      tags: [
+        { name: 'todos', description: 'Todos related end-points' },
+        { name: 'internal', description: 'Endpoints for internal usage' },
+      ],
     },
   });
 

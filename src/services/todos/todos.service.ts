@@ -1,48 +1,58 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
 import type { FastifyTypebox } from '@/types/fastify';
+import type { Todo } from '@prisma/client';
 
 export interface TodosService {
   getTodos(options: { skip?: number; limit?: number }): Promise<{
-    todos: { id: number; title: string }[];
+    todos: Todo[];
     pagination: {
       skip: number;
       limit: number;
       total: number;
     };
   }>;
+  createTodo(options: { title: string; description?: string | null }): Promise<Todo>;
 }
 
-const TOTAL_TODOS = 1000;
-
 async function todosServiceLoader(app: FastifyTypebox) {
+  const { prisma } = app;
+
   app.decorate('service', {
     ...app.service,
     todos: {
       async getTodos(options) {
         const { skip = 0, limit = 10 } = options;
 
-        const totalTodos = TOTAL_TODOS;
-        const todos = [];
-
-        const startIndex = skip;
-        const endIndex = Math.min(startIndex + limit, totalTodos);
-
-        for (let id = startIndex + 1; id <= endIndex; id++) {
-          todos.push({
-            id,
-            title: `ID: ${id.toString()}`,
-          });
-        }
+        const todos = await prisma.todo.findMany({
+          skip,
+          take: limit,
+          orderBy: {
+            createdAt: 'desc',
+          },
+        });
+        const total = await prisma.todo.count();
 
         return {
           todos,
           pagination: {
             skip,
             limit,
-            total: totalTodos,
+            total,
           },
         };
+      },
+      async createTodo(options) {
+        const { title, description = null } = options;
+
+        const todo = await prisma.todo.create({
+          data: {
+            title,
+            description,
+          },
+        });
+
+        return todo;
       },
     },
   });
