@@ -1,6 +1,6 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
-import { examplesModulePlugin } from '@/routes/v1/examples/examples.module';
+import { examplesModulePlugin } from '@/routes/api/v1/examples/examples.module';
 
 import type { FastifyTypebox } from '@/types/fastify';
 

@@ -1,6 +1,6 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
-import { todosRoutesPlugin } from '@/routes/v1/examples/todos/todos.routes';
+import { todosRoutesPlugin } from '@/routes/api/v1/examples/todos/todos.routes';
 import { todosServicePlugin } from '@/services/todos/todos.service';
 
 import type { FastifyTypebox } from '@/types/fastify';

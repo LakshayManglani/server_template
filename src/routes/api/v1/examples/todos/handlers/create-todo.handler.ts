@@ -65,8 +65,8 @@ const BODY_SCHEMA = Type.Object(
   { additionalProperties: false },
 );
 
-const RESPONSE_DATA = Type.Null();
+const RESPONSE_DATA_SCHEMA = Type.Null();
 
-type ResponseData = Static<typeof RESPONSE_DATA>;
+type ResponseData = Static<typeof RESPONSE_DATA_SCHEMA>;
 
-const RESPONSE_SCHEMA = createApiResponseType(RESPONSE_DATA);
+const RESPONSE_SCHEMA = createApiResponseType(RESPONSE_DATA_SCHEMA);

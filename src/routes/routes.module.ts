@@ -1,12 +1,17 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
-import { v1ModulePlugin } from '@/routes/v1/v1.module';
+import { apiModulePlugin } from '@/routes/api/api.module';
+import { internalModulePlugin } from '@/routes/internal/todos.module';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
 async function routesModuleLoader(app: FastifyTypebox) {
-  await app.register(v1ModulePlugin, {
-    prefix: 'v1',
+  await app.register(internalModulePlugin, {
+    prefix: '/',
+  });
+
+  await app.register(apiModulePlugin, {
+    prefix: 'api',
   });
 }
 

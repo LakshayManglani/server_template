@@ -1,6 +1,6 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
-import { todosModulePlugin } from '@/routes/v1/examples/todos/todos.module';
+import { todosModulePlugin } from '@/routes/api/v1/examples/todos/todos.module';
 
 import type { FastifyTypebox } from '@/types/fastify';
 

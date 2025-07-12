@@ -1,7 +1,7 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
-import { createTodoHandler } from '@/routes/v1/examples/todos/handlers/create-todo.handler';
-import { listTodosHandler } from '@/routes/v1/examples/todos/handlers/list-todos.handler';
+import { createTodoHandler } from '@/routes/api/v1/examples/todos/handlers/create-todo.handler';
+import { listTodosHandler } from '@/routes/api/v1/examples/todos/handlers/list-todos.handler';
 
 import type { FastifyTypebox } from '@/types/fastify';
 

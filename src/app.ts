@@ -36,30 +36,8 @@ async function buildApp({
   registerErrorHandler(app);
   registerNotFoundHandler(app);
 
-  app.get(
-    '/health',
-    {
-      schema: {
-        tags: ['internal'],
-        summary: 'Health check',
-        description: 'Check if the server is running.',
-        operationId: 'getHealth',
-        response: {
-          200: {
-            description: 'Server is healthy',
-            type: 'object',
-            properties: {},
-          },
-        },
-      },
-    },
-    async function getServerHealth() {
-      return {};
-    },
-  );
-
   await app.register(routesModulePlugin, {
-    prefix: 'api',
+    prefix: '/',
   });
 
   return app;
