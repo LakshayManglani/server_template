@@ -30,8 +30,8 @@
 
 > Goal: Establish a working local development setup and baseline documentation for contributors.
 
-- [ ] Setup database
-- [ ] Add `/ready` endpoint
+- [x] Setup database
+- [x] Add `/ready` endpoint
 - [ ] Setup Docker
 - [ ] Add testing to validate all core functionalities of the server template
 - [ ] Add development extension in the `.vscode/extensions.json`

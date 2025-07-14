@@ -6,7 +6,7 @@ import type { FastifyTypebox } from '@/types/fastify';
 
 async function v1ModuleLoader(app: FastifyTypebox) {
   await app.register(examplesModulePlugin, {
-    prefix: 'examples',
+    prefix: '/examples',
   });
 }
 

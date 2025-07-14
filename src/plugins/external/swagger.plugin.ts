@@ -1,6 +1,4 @@
 import os from 'node:os';
-import { fastifySwagger } from '@fastify/swagger';
-import ScalarApiReference from '@scalar/fastify-api-reference';
 import { fastifyPlugin } from 'fastify-plugin';
 
 import type { FastifyTypebox } from '@/types/fastify';
@@ -14,7 +12,7 @@ async function swaggerLoader(app: FastifyTypebox) {
 
   const port = PORT.toString();
 
-  await app.register(fastifySwagger, {
+  await app.register(import('@fastify/swagger'), {
     openapi: {
       openapi: '3.0.0',
       info: {
@@ -43,7 +41,7 @@ async function swaggerLoader(app: FastifyTypebox) {
     },
   });
 
-  await app.register(ScalarApiReference, {
+  await app.register(import('@scalar/fastify-api-reference'), {
     routePrefix: '/docs',
     logLevel: 'silent',
   });
