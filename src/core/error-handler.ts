@@ -3,6 +3,7 @@ import { getStatusCode, ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { ERROR_CODES } from '@/core/errors/error-codes';
 import { getTimestamp } from '@/core/utilities';
 
+import type { ErrorResponse } from '@/core/errors/app-error';
 import type { FastifyTypebox } from '@/types/fastify';
 
 export function registerErrorHandler(app: FastifyTypebox) {
@@ -27,7 +28,7 @@ export function registerErrorHandler(app: FastifyTypebox) {
       `[${code}] ${message}`,
     );
 
-    const response = {
+    const response: ErrorResponse = {
       success: false,
       error: {
         code,

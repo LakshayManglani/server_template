@@ -1,6 +1,7 @@
 import { ERROR_CODES } from '@/core/errors/error-codes';
 import { getTimestamp } from '@/core/utilities';
 
+import type { ErrorResponse } from '@/core/errors/app-error';
 import type { FastifyTypebox } from '@/types/fastify';
 
 export function registerNotFoundHandler(app: FastifyTypebox) {
@@ -22,7 +23,7 @@ export function registerNotFoundHandler(app: FastifyTypebox) {
         `[${ERROR_CODES.ROUTE_NOT_FOUND}] Route not found`,
       );
 
-      const response = {
+      const response: ErrorResponse = {
         success: false,
         error: {
           code: ERROR_CODES.ROUTE_NOT_FOUND,

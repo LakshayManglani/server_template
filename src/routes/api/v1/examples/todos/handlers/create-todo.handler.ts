@@ -70,3 +70,5 @@ const RESPONSE_DATA_SCHEMA = Type.Null();
 type ResponseData = Static<typeof RESPONSE_DATA_SCHEMA>;
 
 const RESPONSE_SCHEMA = createApiResponseType(RESPONSE_DATA_SCHEMA);
+
+export type CreateTodoResponseSchema = Static<typeof RESPONSE_SCHEMA>;

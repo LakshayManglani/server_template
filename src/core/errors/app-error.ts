@@ -10,3 +10,15 @@ export class AppError extends Error {
     this.statusCode = statusCode;
   }
 }
+
+export interface ErrorResponse {
+  success: false;
+  error: {
+    code: string;
+    message: string;
+  };
+  meta: {
+    requestId: string;
+    timeStamp: string;
+  };
+}

@@ -8,7 +8,10 @@ import { routesModulePlugin } from '@/routes/routes.module';
 import type { FastifyServerOptions } from 'fastify';
 import type { Environment } from '@/core/environment';
 import type { FastifyTypebox } from '@/types/fastify';
-import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
+import type {
+  FastifyPluginAsyncTypebox,
+  TypeBoxTypeProvider,
+} from '@fastify/type-provider-typebox';
 
 /**
  * Use this function to create a Fastify server with custom options,
@@ -23,9 +26,11 @@ import type { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 async function buildApp({
   serverOptions,
   environmentConfig,
+  plugins,
 }: {
   serverOptions?: FastifyServerOptions;
   environmentConfig: Environment;
+  plugins?: FastifyPluginAsyncTypebox[];
 }): Promise<FastifyTypebox> {
   const app = fastify(serverOptions ?? {}).withTypeProvider<TypeBoxTypeProvider>();
 
@@ -39,6 +44,12 @@ async function buildApp({
   await app.register(routesModulePlugin, {
     prefix: '/',
   });
+
+  if (plugins) {
+    for (const plugin of plugins) {
+      await app.register(plugin);
+    }
+  }
 
   return app;
 }
