@@ -1,8 +1,8 @@
-# 🔤 Naming Conventions
+# Naming Conventions
 
 This project follows strict naming conventions to ensure consistency, clarity, and maintainability across the entire codebase.
 
-## 📁 Folder & File Naming
+## Folder & File Naming
 
 | Target  | Convention   | Examples                       |
 | ------- | ------------ | ------------------------------ |
@@ -11,7 +11,7 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 
 ✅ Use `kebab-case` consistently for all folders and file names.
 
-## 🧠 Variable Naming
+## Variable Naming
 
 | Type                  | Convention                              | Examples                              |
 | --------------------- | --------------------------------------- | ------------------------------------- |
@@ -21,11 +21,12 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 | Parameters            | `camelCase`                             | `user`, `token`, `_options`           |
 | Object properties     | `camelCase`, `snake_case`, `UPPER_CASE` | `userData`, `api_response`, `APP_ENV` |
 
-> 🔹 Use `UPPER_SNAKE_CASE` only for **true constants** like env vars or global settings.
+> [!NOTE]
 >
-> 🔹 `camelCase` is used for most identifiers.
+> - Use `UPPER_SNAKE_CASE` only for **true constants** like env vars or global settings.
+> - `camelCase` is used for most identifiers.
 
-## ⚙️ Function Naming
+## Function Naming
 
 | Type            | Convention  | Examples                         |
 | --------------- | ----------- | -------------------------------- |
@@ -33,11 +34,12 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 | Arrow functions | `camelCase` | `handleRequest = () => {}`       |
 | Methods         | `camelCase` | `auth.login()`, `user.update()`  |
 
-> 🔹 Name functions based on **what they do**, e.g. `getUserById()`, not `getData()`
+> [!NOTE]
 >
-> 🔹 Avoid ambiguous or overly short names like `doTask()` or `handle()`
+> - Name functions based on **what they do**, e.g. `getUserById()`, not `getData()`
+> - Avoid ambiguous or overly short names like `doTask()` or `handle()`
 
-## 📦 TypeScript Naming
+## TypeScript Naming
 
 | Type         | Convention   | Examples                     |
 | ------------ | ------------ | ---------------------------- |
@@ -47,9 +49,10 @@ This project follows strict naming conventions to ensure consistency, clarity, a
 | Enums        | `PascalCase` | `UserRole`, `OrderStatus`    |
 | Enum Members | `PascalCase` | `Admin`, `Customer`, `Guest` |
 
-> ✳️ We **do not prefix** interfaces with `I` (e.g. `IUser`) unless integrating with external systems.
+> [!NOTE]
+> We **do not prefix** interfaces with `I` (e.g. `IUser`) unless integrating with external systems.
 
-## 🛠 ESLint Enforcement
+## ESLint Enforcement
 
 The following ESLint rules help enforce naming conventions:
 
@@ -58,7 +61,7 @@ The following ESLint rules help enforce naming conventions:
 | Variable naming | [`@typescript-eslint/naming-convention`](https://typescript-eslint.io/rules/naming-convention)                         |
 | File naming     | [`unicorn/filename-case`](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/filename-case.md) |
 
-## 📝 Best Practices
+## Best Practices
 
 - ❌ Avoid abbreviations like req (use request).
 - ✅ Name things based on **intent and behavior** (`createToken`, `deleteSession`).

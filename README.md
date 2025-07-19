@@ -2,11 +2,26 @@
 
 A scalable, opinionated Fastify + TypeScript server template with modern tooling (ESLint, Prettier, Vitest, Pino, Docker, CI/CD, API docs, and more).
 
-## Prerequisites
+## Installation
+
+### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v22+)
-- [VS Code IDE](https://code.visualstudio.com/)
+- [PostgreSQL (v17.5 recommended)](https://www.postgresql.org/download/)
 - [pnpm](https://pnpm.io/) (v10+)
+
+### Quick Installation
+
+```bash
+git clone git@github.com:{your-username}/server-template.git
+cd server-template
+pnpm install
+cp .env.sample .env
+pnpm db:dev
+pnpm dev
+```
+
+See [Installation](./docs/getting-started/installation.md) for more details.
 
 ## How to contribute
 
@@ -34,8 +49,23 @@ For more details on the commit format and other guidelines, please refer to the 
 To view the internal documentation:
 
 ```bash
-npm run docs:dev
+pnpm docs:dev
 ```
+
+![Docs homepage](./docs/public/assets/docs_1.png)
+![Docs](./docs/public/assets/docs_2.png)
+
+## API documentation
+
+Start the dev server and open [http://localhost:3000/docs](http://localhost:3000/docs).
+API docs are only available for development.
+
+```bash
+pnpm dev
+```
+
+![API Docs](./docs/public/assets/api_docs_1.png)
+![API Docs ](./docs/public/assets/api_docs_2.png)
 
 ## LICENSE
 

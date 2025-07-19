@@ -7,7 +7,7 @@ export const META_SCHEMA = Type.Object({
   timeStamp: Type.String(),
 });
 
-export function createApiResponseType<Data extends TSchema>(dataSchema: Data) {
+export function createApiResponseSchema<Data extends TSchema>(dataSchema: Data) {
   return Type.Object(
     {
       success: Type.Boolean(),

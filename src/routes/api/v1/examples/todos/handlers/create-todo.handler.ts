@@ -2,7 +2,7 @@ import { Static, Type } from '@sinclair/typebox';
 import { StatusCodes } from 'http-status-codes';
 
 import { generateApiResponse } from '@/core/api/api-response';
-import { createApiResponseType } from '@/core/api/api-response.schema';
+import { createApiResponseSchema } from '@/core/api/api-response.schema';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
@@ -57,7 +57,6 @@ const BODY_SCHEMA = Type.Object(
     description: Type.Optional(
       Type.String({
         description: 'An optional short description providing more details about the todo item.',
-        default: null,
         examples: ['Currently only implementing create and list endpoints'],
       }),
     ),
@@ -69,6 +68,6 @@ const RESPONSE_DATA_SCHEMA = Type.Null();
 
 type ResponseData = Static<typeof RESPONSE_DATA_SCHEMA>;
 
-const RESPONSE_SCHEMA = createApiResponseType(RESPONSE_DATA_SCHEMA);
+const RESPONSE_SCHEMA = createApiResponseSchema(RESPONSE_DATA_SCHEMA);
 
 export type CreateTodoResponseSchema = Static<typeof RESPONSE_SCHEMA>;

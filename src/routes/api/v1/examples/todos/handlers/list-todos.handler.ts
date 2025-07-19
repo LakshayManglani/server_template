@@ -2,7 +2,7 @@ import { Static, Type } from '@sinclair/typebox';
 import { StatusCodes } from 'http-status-codes';
 
 import { generateApiResponse } from '@/core/api/api-response';
-import { createApiResponseType } from '@/core/api/api-response.schema';
+import { createApiResponseSchema } from '@/core/api/api-response.schema';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
@@ -139,6 +139,6 @@ const RESPONSE_DATA_SCHEMA = Type.Object(
 
 type ResponseData = Static<typeof RESPONSE_DATA_SCHEMA>;
 
-const RESPONSE_SCHEMA = createApiResponseType(RESPONSE_DATA_SCHEMA);
+const RESPONSE_SCHEMA = createApiResponseSchema(RESPONSE_DATA_SCHEMA);
 
 export type ListTodosResponseSchema = Static<typeof RESPONSE_SCHEMA>;
