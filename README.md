@@ -16,7 +16,7 @@ A scalable, opinionated Fastify + TypeScript server template with modern tooling
 git clone git@github.com:{your-username}/server-template.git
 cd server-template
 pnpm install
-cp .env.sample .env
+cp .env.example .env
 pnpm db:dev
 pnpm dev
 ```

@@ -8,7 +8,7 @@ This project requires the following tools to be installed before getting started
 - [pnpm (v10+)](https://pnpm.io/installation)
 - [PostgreSQL (v17.5 recommended)](https://www.postgresql.org/download/)
 - [Git](https://git-scm.com/downloads)
-- [VSCode]W(https://code.visualstudio.com/)
+- [VSCode](https://code.visualstudio.com/)
 
 ## 1. Clone the Repository
 
@@ -44,7 +44,7 @@ pnpm install
 1. Copy the example env file:
 
 ```bash
-cp .env.sample .env
+cp .env.example .env
 ```
 
 2. Fill in your environment-specific values in the new `.env` file.
