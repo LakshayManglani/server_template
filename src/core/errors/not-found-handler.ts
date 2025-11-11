@@ -1,10 +1,10 @@
 import { ERROR_CODES } from '@/core/errors/error-codes';
 import { getTimestamp } from '@/core/utilities';
 
-import type { ErrorResponse } from '@/core/errors/app-error';
+import type { ApiErrorResponse } from '@/core/api/api-error';
 import type { FastifyTypebox } from '@/types/fastify';
 
-export function registerNotFoundHandler(app: FastifyTypebox) {
+function registerNotFoundHandler(app: FastifyTypebox) {
   app.setNotFoundHandler(
     {
       preHandler: app.rateLimit({
@@ -23,7 +23,7 @@ export function registerNotFoundHandler(app: FastifyTypebox) {
         `[${ERROR_CODES.ROUTE_NOT_FOUND}] Route not found`,
       );
 
-      const response: ErrorResponse = {
+      const response: ApiErrorResponse = {
         success: false,
         error: {
           code: ERROR_CODES.ROUTE_NOT_FOUND,
@@ -39,3 +39,5 @@ export function registerNotFoundHandler(app: FastifyTypebox) {
     },
   );
 }
+
+export { registerNotFoundHandler };

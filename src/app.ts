@@ -1,7 +1,7 @@
 import { fastify } from 'fastify';
 
-import { registerErrorHandler } from '@/core/error-handler';
-import { registerNotFoundHandler } from '@/core/not-found-handler';
+import { registerErrorHandler } from '@/core/errors/error-handler';
+import { registerNotFoundHandler } from '@/core/errors/not-found-handler';
 import { externalModulePlugin } from '@/plugins/external/external.module';
 import { routesModulePlugin } from '@/routes/routes.module';
 

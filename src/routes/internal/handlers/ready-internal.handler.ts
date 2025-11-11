@@ -1,7 +1,8 @@
 import { Type } from '@sinclair/typebox';
 import { StatusCodes } from 'http-status-codes';
 
-import { AppError } from '@/core/errors/app-error';
+import { apiError } from '@/core/api/api-error';
+import { logError } from '@/core/errors/utilities';
 
 import type { FastifyTypebox } from '@/types/fastify';
 
@@ -22,17 +23,22 @@ export function readyInternalHandler(app: FastifyTypebox) {
         },
       },
     },
-    async function ready() {
+    async function ready(request) {
       try {
         await app.prisma.$queryRaw`SELECT 1`;
-      } catch (error) {
-        app.log.error(error, 'Failed to connect to database');
-        throw new AppError('Failed to connect to database', 'INTERNAL_SERVER_ERROR', 503);
-      }
 
-      return {
-        ready: true,
-      };
+        return {
+          ready: true,
+        };
+      } catch (error) {
+        logError(request, error);
+
+        throw apiError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Failed to connect to database',
+          statusCode: 503,
+        });
+      }
     },
   );
 }
