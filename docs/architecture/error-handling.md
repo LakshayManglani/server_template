@@ -1,58 +1,54 @@
-# Error Handling
+# Error handling
 
-All API errors are handled through a **global error handler** defined in `src/core/error-handler.ts`.
+All errors are handled through a **global error handler** defined in `src/core/error-handler.ts`.
 
-## Throwing Errors
+## Throwing errors in routes
 
-To throw an error inside a route or service, use the `AppError` class.  
+To throw an error inside a route, use the `apiError` function.  
+`logError` function can used to log unknown error.
 This ensures the error is logged and returned to the user in a consistent format.
 
 ::: code-group
 
 ```ts [ready-internal.handler.ts]
-import { AppError } from '@/core/errors/app-error';
-
-async function ready() {
+async function ready(request) {
   try {
     await app.prisma.$queryRaw`SELECT 1`;
+
+    return {
+      ready: true,
+    };
   } catch (error) {
-    app.log.error(error, 'Failed to connect to database');
-    throw new AppError('Failed to connect to database', 'INTERNAL_SERVER_ERROR', 503);
+    logError(request, error);
+
+    throw apiError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: 'Failed to connect to database',
+      statusCode: 503,
+    });
   }
-
-  return { ready: true };
 }
 ```
-
-:::
-
-## Error Response Format
-
-All structured errors follow this consistent format:
-::: code-group
-
-```ts
-export interface ErrorResponse {
-  success: false;
-  error: {
-    code: string;
-    message: string;
-  };
-  meta: {
-    requestId: string;
-    timeStamp: string;
-  };
-}
-```
-
-:::
 
 > [!NOTE]
 >
-> - In **development**, the response also includes the error **stack trace** for easier debugging.
-> - The `timeStamp` field:
->   - In development: shows local time.
->   - In production: uses ISO format.
+> - Always use `logError` function if there is catch block wrapping a service/database call.
+
+:::
+
+## Throwing errors elsewhere
+
+To throw an error inside a service/plugin or any app level function, use the `AppError` class.
+
+```ts
+import { AppError } from '@/core/errors/app-error';
+
+async function login() {
+  if (!user) {
+    throw new AppError('Failed to get user', 'USER.NOT_FOUND');
+  }
+}
+```
 
 ## Not Found Handler
 
@@ -61,3 +57,10 @@ This handler also has custom **max rate-limit** value.
 
 You can find it in:
 `src/core/not-found-handler.ts`
+
+## Error response
+
+- In **development**, the response includes the error **stack trace** for easier debugging.
+- The `timeStamp` field:
+  - In development: shows local time.
+  - In production: uses ISO format.
