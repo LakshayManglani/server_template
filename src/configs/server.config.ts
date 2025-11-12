@@ -1,3 +1,5 @@
+import { ajvFilePlugin } from '@fastify/multipart';
+
 import { getLoggerConfig } from '@/configs/logger.config';
 
 import type { FastifyListenOptions, FastifyServerOptions } from 'fastify';
@@ -23,6 +25,7 @@ export function getFastifyServerConfig(options: { environmentConfig: Environment
         customOptions: {
           removeAdditional: true,
         },
+        plugins: [ajvFilePlugin],
       },
     },
     listenOptions: {
