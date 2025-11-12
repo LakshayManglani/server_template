@@ -66,6 +66,7 @@ jobs:
           HOST: 0.0.0.0
           PORT: 3000
           CORS_ORIGINS: '*'
+          COOKIE_SECRET: '28f5d33371805fb51446b188f39ee00b42c04eaa626412ef5f0f2d7e042d55d7'
           # Logging
           LOG_LEVEL: silent
           # Rate limit
@@ -75,3 +76,8 @@ jobs:
           RATE_LIMIT_CACHE: 5000
           # Database
           DATABASE_URL: 'postgresql://postgres:postgres@localhost:5433/test_db'
+          # Cloudinary
+          CLOUDINARY_CLOUD_NAME: 'cloud_name'
+          CLOUDINARY_API_KEY: 'api_key'
+          CLOUDINARY_API_SECRET: 'api_secret'
+          CLOUDINARY_FOLDER: 'folder_name'
