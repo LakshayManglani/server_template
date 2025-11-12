@@ -35,6 +35,11 @@ export const environmentSchema = Type.Object({
 
   // Should be a 256-bit (32 bytes) random key in hex format
   COOKIE_SECRET: Type.String({}),
+
+  CLOUDINARY_CLOUD_NAME: Type.String({}),
+  CLOUDINARY_API_KEY: Type.String({}),
+  CLOUDINARY_API_SECRET: Type.String({}),
+  CLOUDINARY_FOLDER: Type.String({}),
 });
 
 export type Environment = Static<typeof environmentSchema>;
