@@ -2,7 +2,7 @@ import { buildTestApp } from 'test/helper';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 
 import type { InjectOptions } from 'fastify';
-import type { ErrorResponse } from '@/core/errors/app-error';
+import type { ApiErrorResponse } from '@/core/api/api-error';
 import type { CreateTodoResponseSchema } from '@/routes/api/v1/examples/todos/handlers/create-todo.handler';
 import type { FastifyTypebox } from '@/types/fastify';
 
@@ -90,7 +90,7 @@ describe(`${method} ${url}`, () => {
     expect(response.statusCode).toBe(400);
     expect(response.headers['content-type']).toMatch('application/json');
 
-    const body = response.json<ErrorResponse>();
+    const body = response.json<ApiErrorResponse>();
     expect(body.success).toBe(false);
   });
 });

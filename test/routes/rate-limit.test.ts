@@ -2,7 +2,7 @@ import { buildTestApp } from 'test/helper';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 import type { InjectOptions } from 'fastify';
-import type { ErrorResponse } from '@/core/errors/app-error';
+import type { ApiErrorResponse } from '@/core/api/api-error';
 import type { FastifyTypebox } from '@/types/fastify';
 
 const url = '/health';
@@ -39,7 +39,7 @@ describe(`${method} ${url}`, () => {
     expect(response.statusCode).toBe(429);
     expect(response.headers['content-type']).toMatch('application/json');
 
-    const body = response.json<ErrorResponse>();
+    const body = response.json<ApiErrorResponse>();
     expect(body.success).toBe(false);
   });
 });

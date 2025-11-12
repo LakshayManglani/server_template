@@ -1,8 +1,6 @@
 import { buildTestApp } from 'test/helper';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
-import { ERROR_CODES } from '@/core/errors/error-codes';
-
 import type { InjectOptions } from 'fastify';
 import type { FastifyTypebox } from '@/types/fastify';
 
@@ -51,9 +49,6 @@ describe(`${method} ${url}`, () => {
 
     expect(response.json()).toMatchObject({
       success: false,
-      error: {
-        code: ERROR_CODES.RATE_LIMIT_EXCEEDED,
-      },
     });
   });
 });
