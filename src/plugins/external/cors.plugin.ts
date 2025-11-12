@@ -9,6 +9,7 @@ async function corsLoader(fastify: FastifyTypebox) {
   await fastify.register(fastifyCors, {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     origin: CORS_ORIGINS,
+    credentials: true,
   });
 }
 

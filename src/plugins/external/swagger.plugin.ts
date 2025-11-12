@@ -20,20 +20,7 @@ async function swaggerLoader(app: FastifyTypebox) {
         description: 'Development-only API docs',
         version: '1.0.0',
       },
-      servers:
-        HOST === '0.0.0.0'
-          ? getIPv4Addresses().map((host) => {
-              return {
-                url: `http://${host}:${port}`,
-                description: 'Development server',
-              };
-            })
-          : [
-              {
-                url: `http://${HOST}:${port}`,
-                description: 'Development server',
-              },
-            ],
+      servers: getServers({ host: HOST, port }),
       tags: [
         { name: 'todos', description: 'Todos related end-points' },
         { name: 'internal', description: 'Endpoints for internal usage' },
@@ -45,6 +32,32 @@ async function swaggerLoader(app: FastifyTypebox) {
     routePrefix: '/docs',
     logLevel: 'silent',
   });
+}
+
+function getServers(options: { host: string; port: string }) {
+  const { host, port } = options;
+
+  if (host == '0.0.0.0') {
+    return [
+      {
+        url: `http://localhost:${port}`,
+        description: 'Development server',
+      },
+      ...getIPv4Addresses().map((host) => {
+        return {
+          url: `http://${host}:${port}`,
+          description: 'Development server',
+        };
+      }),
+    ];
+  }
+
+  return [
+    {
+      url: `http://${host}:${port}`,
+      description: 'Development server',
+    },
+  ];
 }
 
 /**

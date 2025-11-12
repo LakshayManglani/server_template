@@ -1,5 +1,6 @@
 import { fastifyPlugin } from 'fastify-plugin';
 
+import { cookiePlugin } from '@/plugins/external/cookie.plugin';
 import { corsPlugin } from '@/plugins/external/cors.plugin';
 import { helmetPlugin } from '@/plugins/external/helmet.plugin';
 import { prismaPlugin } from '@/plugins/external/prisma.plugin';
@@ -15,6 +16,7 @@ async function externalModuleLoader(fastify: FastifyTypebox) {
     fastify.register(rateLimitPlugin),
     fastify.register(swaggerPlugin),
     fastify.register(prismaPlugin),
+    fastify.register(cookiePlugin),
   ]);
 }
 

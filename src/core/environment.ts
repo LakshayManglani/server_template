@@ -32,6 +32,9 @@ export const environmentSchema = Type.Object({
   RATE_LIMIT_CACHE: Type.Integer({ default: 5000 }),
 
   DATABASE_URL: Type.String({}),
+
+  // Should be a 256-bit (32 bytes) random key in hex format
+  COOKIE_SECRET: Type.String({}),
 });
 
 export type Environment = Static<typeof environmentSchema>;
