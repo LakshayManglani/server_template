@@ -32,7 +32,15 @@ function registerErrorHandler(app: FastifyTypebox) {
 
     if (
       isApiError ||
-      code === 'FST_ERR_VALIDATION' ||
+      [
+        'FST_ERR_VALIDATION',
+        // for multipart
+        'FST_REQ_FILE_TOO_LARGE',
+        'FST_INVALID_MULTIPART_CONTENT_TYPE',
+        'FST_ERR_CTP_INVALID_MEDIA_TYPE',
+        'FST_ERR_CTP_EMPTY_JSON_BODY',
+        'FST_FILES_LIMIT',
+      ].includes(code) ||
       error.name === 'SyntaxError' ||
       statusCode === 429
     ) {
