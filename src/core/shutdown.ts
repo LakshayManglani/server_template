@@ -26,17 +26,14 @@ import type { FastifyTypebox } from '@/types/fastify';
 async function closeFastifyApp(app: FastifyTypebox, closeTimeout = 10_000) {
   const timeout = setTimeout(() => {
     app.log.error('Application did not close in time. Force closing.');
-    process.exitCode = 1;
+
+    // eslint-disable-next-line unicorn/no-process-exit
+    process.exit(1);
   }, closeTimeout);
   timeout.unref();
 
-  try {
-    await app.close();
-    app.log.info('Application closed');
-  } catch (error) {
-    app.log.error(error, 'Error closing application:');
-    process.exitCode = 1;
-  }
+  await app.close();
+  app.log.info('Application closed');
 }
 
 let isShuttingDown = false;
@@ -48,7 +45,8 @@ function handleEvent(event: NodeJS.Signals, app: FastifyTypebox) {
     app.log.info(`${event} received.`);
     closeFastifyApp(app).catch((error: unknown) => {
       app.log.error(error, 'Unexpected error during shutdown:');
-      process.exitCode = 1;
+
+      process.exit(1);
     });
   });
 }
