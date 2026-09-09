@@ -41,8 +41,8 @@
 
 > Goal: Add minimal features and metadata required to make the project usable and publishable.
 
-- [ ] Set up metrics endpoint
-- [ ] Set up example auth
+- [ ] Set up metrics endpoint _(planned — not yet implemented)_
+- [ ] Set up example auth _(WIP on the `feat/auth` branch — not yet merged)_
 - [x] Add `author` info to `package.json`
 - [x] Set `repository.url` in `package.json` to the project's GitHub repo
 - [x] Choose License (MIT)

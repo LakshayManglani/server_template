@@ -69,5 +69,9 @@ Some areas are Work In Progress:
 
 - Docker Support
   - implemented in a separate branch named `feat/docker`
+- Example Authentication
+  - work in progress on the `feat/auth` branch, not yet merged
+- Metrics Endpoint
+  - planned, not yet implemented
 - Image/Asset Processing
 - Tutorial Docs

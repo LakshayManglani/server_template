@@ -67,6 +67,17 @@ pnpm dev
 ![API Docs](./docs/public/assets/api_docs_1.png)
 ![API Docs ](./docs/public/assets/api_docs_2.png)
 
+## Project status
+
+This template is usable today, but a few pieces are still in progress:
+
+- **Example authentication** — WIP on the `feat/auth` branch, not yet merged
+- **Metrics endpoint** — planned, not yet implemented
+- **Docker** — available on the `feat/docker` branch
+- **Image/asset processing** and **tutorial docs** — planned
+
+See [`TODO.md`](./TODO.md) for the full roadmap.
+
 ## License
 
 Released under the [MIT License](./LICENSE).
