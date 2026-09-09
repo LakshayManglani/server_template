@@ -43,9 +43,9 @@
 
 - [ ] Set up metrics endpoint
 - [ ] Set up example auth
-- [ ] Add `author` info to `package.json` once company is finalized
-- [ ] Update `repository.url` in `package.json` once company GitHub account is created
-- [ ] Choose License
+- [x] Add `author` info to `package.json`
+- [x] Set `repository.url` in `package.json` to the project's GitHub repo
+- [x] Choose License (MIT)
 
 ## 🛠️ Phase 5: Deployment & Observability
 

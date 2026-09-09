@@ -67,10 +67,8 @@ pnpm dev
 ![API Docs](./docs/public/assets/api_docs_1.png)
 ![API Docs ](./docs/public/assets/api_docs_2.png)
 
-## LICENSE
+## License
 
-TODO: Add license
+Released under the [MIT License](./LICENSE).
 
-```
-
-```
+Copyright (c) 2026 Lakshay Manglani.
