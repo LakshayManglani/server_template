@@ -5,7 +5,7 @@ This project follows a modular, scalable architecture designed for clarity, main
 ## Root Directory
 
 ```txt
-server-template/
+server_template/
 ├── src/           # Application source code
 ├── test/          # Vitest test files
 ├── prisma/        # Prisma schema and migrations

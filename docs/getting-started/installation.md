@@ -15,7 +15,7 @@ This project requires the following tools to be installed before getting started
 Make sure you have [SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) and [GPG](https://docs.github.com/en/authentication/managing-commit-signature-verification) setup for Git.
 
 ```bash
-git clone git@github.com:{your-username}/server-template.git
+git clone git@github.com:{your-username}/server_template.git
 ```
 
 > Replace `{your-username}` with your actual GitHub username.
@@ -25,7 +25,7 @@ git clone git@github.com:{your-username}/server-template.git
 Open the folder in VSCode:
 
 ```bash
-cd server-template
+cd server_template
 code .
 ```
 
